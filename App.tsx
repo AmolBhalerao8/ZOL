@@ -305,27 +305,19 @@ export default function App() {
         </div>
         <div className="relative">
           <div className="animate-marquee">
-            {/* 
-              --- DESIGN PARTNERS INTEGRATION ---
-              Mapping the uploaded dealership logos into the scrolling marquee.
-              Replace 'imgSrc' strings with the actual local asset paths.
-            */}
-            <LogoPlaceholder text="Wittmeier" subtext="Ford · Lincoln · Chevrolet · Honda" icon={<Star className="w-5 h-5" />} />
-            <LogoPlaceholder text="Chico Nissan Hyundai" subtext="California Premier Retailer" icon={<Award className="w-5 h-5" />} />
-            <LogoPlaceholder text="Pajouh Automotive" subtext="BMW · Mercedes · Volvo · Cadillac" icon={<Globe className="w-5 h-5" />} />
-            <LogoPlaceholder text="Volkswagen Mazda" subtext="Hybrid Performance Center" icon={<Zap className="w-5 h-5" />} />
-            <LogoPlaceholder text="Global Auto CP" subtext="Automotive Logistics" icon={<Activity className="w-5 h-5" />} />
-            <LogoPlaceholder text="Partner Alpha" subtext="Innovation Group" icon={<Building2 className="w-5 h-5" />} />
-            <LogoPlaceholder text="Partner Beta" subtext="Elite Dealer Services" icon={<Award className="w-5 h-5" />} />
+            {/* Design Partners with real logos */}
+            <LogoPlaceholder text="Wittmeier" imgSrc="/logos/wittmeier.png" />
+            <LogoPlaceholder text="Chico Nissan Hyundai" imgSrc="/logos/chico-nissan.jpg" />
+            <LogoPlaceholder text="Pajouh Automotive" imgSrc="/logos/pajouh.jpg" />
+            <LogoPlaceholder text="Volkswagen Mazda" imgSrc="/logos/volkswagen-mazda.jpg" />
+            <LogoPlaceholder text="Chuck Patterson" imgSrc="/logos/chuck-patterson.jpg" />
             
             {/* Duplicate set for seamless looping */}
-            <LogoPlaceholder text="Wittmeier" subtext="Ford · Lincoln · Chevrolet · Honda" icon={<Star className="w-5 h-5" />} />
-            <LogoPlaceholder text="Chico Nissan Hyundai" subtext="California Premier Retailer" icon={<Award className="w-5 h-5" />} />
-            <LogoPlaceholder text="Pajouh Automotive" subtext="BMW · Mercedes · Volvo · Cadillac" icon={<Globe className="w-5 h-5" />} />
-            <LogoPlaceholder text="Volkswagen Mazda" subtext="Hybrid Performance Center" icon={<Zap className="w-5 h-5" />} />
-            <LogoPlaceholder text="Global Auto CP" subtext="Automotive Logistics" icon={<Activity className="w-5 h-5" />} />
-            <LogoPlaceholder text="Partner Alpha" subtext="Innovation Group" icon={<Building2 className="w-5 h-5" />} />
-            <LogoPlaceholder text="Partner Beta" subtext="Elite Dealer Services" icon={<Award className="w-5 h-5" />} />
+            <LogoPlaceholder text="Wittmeier" imgSrc="/logos/wittmeier.png" />
+            <LogoPlaceholder text="Chico Nissan Hyundai" imgSrc="/logos/chico-nissan.jpg" />
+            <LogoPlaceholder text="Pajouh Automotive" imgSrc="/logos/pajouh.jpg" />
+            <LogoPlaceholder text="Volkswagen Mazda" imgSrc="/logos/volkswagen-mazda.jpg" />
+            <LogoPlaceholder text="Chuck Patterson" imgSrc="/logos/chuck-patterson.jpg" />
           </div>
         </div>
       </section>
