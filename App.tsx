@@ -241,52 +241,18 @@ export default function App() {
           </div>
 
           <div className="relative animate-in fade-in slide-in-from-right-8 duration-700 delay-100">
-            {/* UI Mock Area */}
+            {/* YouTube Video */}
             <div className="bg-slate-900 rounded-3xl p-1 shadow-2xl relative z-10 transition-transform hover:scale-[1.01]">
               <div className="bg-white rounded-[22px] overflow-hidden border border-slate-200">
-                {/* Mock Phone Header */}
-                <div className="bg-slate-50 border-b border-slate-100 p-4 flex items-center space-x-3">
-                  <div className="w-10 h-10 rounded-full bg-indigo-100 flex items-center justify-center text-indigo-600 font-bold">JD</div>
-                  <div>
-                    <div className="text-sm font-bold text-slate-900">John Doe</div>
-                    <div className="text-[10px] text-slate-400 font-medium">New Lead • Ford F-150</div>
-                  </div>
-                </div>
-                {/* Mock Messages */}
-                <div className="p-6 space-y-4 min-h-[400px] overflow-y-auto">
-                  <div className="flex justify-end animate-in fade-in slide-in-from-bottom-2 duration-300">
-                    <div className="bg-slate-100 text-slate-700 p-3 rounded-2xl rounded-tr-none text-sm max-w-[80%]">
-                      I'm interested in the 2024 F-150. Is it still available?
-                    </div>
-                  </div>
-                  <div className="flex flex-col space-y-2 animate-in fade-in slide-in-from-bottom-2 duration-300 delay-300">
-                    <div className="bg-indigo-600 text-white p-3 rounded-2xl rounded-tl-none text-sm max-w-[80%]">
-                      Hi John! This is ZOL from North Park Ford. Yes, it's still available! ⚡️
-                    </div>
-                    <div className="bg-indigo-600 text-white p-3 rounded-2xl rounded-tl-none text-sm max-w-[80%]">
-                      Are you looking to trade in your current vehicle or just browsing for now?
-                    </div>
-                  </div>
-                  <div className="flex justify-end animate-in fade-in slide-in-from-bottom-2 duration-300 delay-1000">
-                    <div className="bg-slate-100 text-slate-700 p-3 rounded-2xl rounded-tr-none text-sm max-w-[80%]">
-                      Yes, have a 2021 Tacoma.
-                    </div>
-                  </div>
-                  <div className="flex flex-col space-y-2 animate-in fade-in slide-in-from-bottom-2 duration-300 delay-[1500ms]">
-                    <div className="bg-indigo-600 text-white p-3 rounded-2xl rounded-tl-none text-sm max-w-[80%]">
-                      The Tacoma is a great truck! I can get you a high value for that trade.
-                    </div>
-                    <div className="bg-indigo-600 text-white p-3 rounded-2xl rounded-tl-none text-sm max-w-[80%]">
-                      When would you like to stop by for a quick appraisal and test drive the F-150?
-                    </div>
-                  </div>
-                </div>
-                {/* Mock Input */}
-                <div className="p-4 border-t border-slate-100 flex items-center space-x-3 bg-slate-50">
-                  <div className="flex-1 bg-white border border-slate-200 rounded-full h-10 px-4 text-xs text-slate-300 flex items-center">ZOL is replying...</div>
-                  <div className="w-10 h-10 rounded-full bg-indigo-600 flex items-center justify-center text-white">
-                    <ArrowRight className="w-4 h-4" />
-                  </div>
+                <div className="aspect-video">
+                  <iframe
+                    className="w-full h-full rounded-[22px]"
+                    src="https://www.youtube.com/embed/3FW-I_fF6cg"
+                    title="ZOL Demo Video"
+                    frameBorder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowFullScreen
+                  ></iframe>
                 </div>
               </div>
             </div>
