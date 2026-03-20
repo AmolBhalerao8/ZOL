@@ -1,5 +1,6 @@
 
 import React, { useEffect, useRef, useState } from 'react';
+import { useForm, ValidationError } from '@formspree/react';
 import OrbitVisualization from './OrbitVisualization';
 import { motion, useInView } from 'framer-motion';
 import {
@@ -649,14 +650,9 @@ function SecuritySection() {
 
 // ─── EARLY ACCESS SECTION ─────────────────────────────────────────────────────
 function EarlyAccessSection() {
-  const [submitted, setSubmitted] = useState(false);
-  const [loading, setLoading] = useState(false);
+  const [state, handleSubmit] = useForm('xkgdqlpy');
   const DEMO_URL = 'https://calendar.app.google/e8AzVpEJQNiNTVSi6';
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setLoading(true);
-    setTimeout(() => { setLoading(false); setSubmitted(true); }, 1400);
-  };
+
   return (
     <section id="early-access" className="py-32 px-6 relative overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-b from-blue-950/20 to-violet-950/20 pointer-events-none" />
@@ -676,7 +672,7 @@ function EarlyAccessSection() {
 
         <FadeUp delay={0.15}>
           <div className="p-8 rounded-3xl border border-white/10 bg-white/[0.03] backdrop-blur-sm">
-            {submitted ? (
+            {state.succeeded ? (
               <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} className="py-8">
                 <div className="w-16 h-16 rounded-full bg-emerald-500/10 flex items-center justify-center mx-auto mb-6">
                   <CheckCircle2 className="w-8 h-8 text-emerald-400" />
@@ -687,31 +683,40 @@ function EarlyAccessSection() {
                   className="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold text-white bg-gradient-to-r from-blue-600 to-violet-600 hover:opacity-90 transition-opacity text-sm">
                   Book a Demo Now <ArrowRight className="w-4 h-4" />
                 </a>
-                <button onClick={() => setSubmitted(false)} className="block mt-4 mx-auto text-sm text-slate-600 hover:text-slate-400 transition-colors">
-                  Submit another
-                </button>
               </motion.div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div className="grid sm:grid-cols-2 gap-4">
-                  <input required type="text" placeholder="Your name"
-                    className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-slate-600 text-sm focus:outline-none focus:border-blue-500/50 focus:bg-white/[0.07] transition-all" />
-                  <input required type="text" placeholder="Company"
-                    className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-slate-600 text-sm focus:outline-none focus:border-blue-500/50 focus:bg-white/[0.07] transition-all" />
+                  <div>
+                    <input required type="text" id="name" name="name" placeholder="Your name"
+                      className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-slate-600 text-sm focus:outline-none focus:border-blue-500/50 focus:bg-white/[0.07] transition-all" />
+                    <ValidationError prefix="Name" field="name" errors={state.errors} className="text-red-400 text-xs mt-1 text-left" />
+                  </div>
+                  <div>
+                    <input required type="text" id="company" name="company" placeholder="Company"
+                      className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-slate-600 text-sm focus:outline-none focus:border-blue-500/50 focus:bg-white/[0.07] transition-all" />
+                    <ValidationError prefix="Company" field="company" errors={state.errors} className="text-red-400 text-xs mt-1 text-left" />
+                  </div>
                 </div>
-                <input required type="email" placeholder="Work email"
-                  className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-slate-600 text-sm focus:outline-none focus:border-blue-500/50 focus:bg-white/[0.07] transition-all" />
-                <textarea placeholder="What systems do you currently use?" rows={3}
-                  className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-slate-600 text-sm focus:outline-none focus:border-blue-500/50 focus:bg-white/[0.07] transition-all resize-none" />
-                <button type="submit" disabled={loading}
+                <div>
+                  <input required type="email" id="email" name="email" placeholder="Work email"
+                    className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-slate-600 text-sm focus:outline-none focus:border-blue-500/50 focus:bg-white/[0.07] transition-all" />
+                  <ValidationError prefix="Email" field="email" errors={state.errors} className="text-red-400 text-xs mt-1 text-left" />
+                </div>
+                <div>
+                  <textarea id="systems" name="systems" placeholder="What systems do you currently use?" rows={3}
+                    className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-slate-600 text-sm focus:outline-none focus:border-blue-500/50 focus:bg-white/[0.07] transition-all resize-none" />
+                  <ValidationError prefix="Systems" field="systems" errors={state.errors} className="text-red-400 text-xs mt-1 text-left" />
+                </div>
+                <button type="submit" disabled={state.submitting}
                   className="w-full py-4 rounded-xl font-semibold text-white bg-gradient-to-r from-blue-600 to-violet-600 hover:from-blue-500 hover:to-violet-500 transition-all shadow-[0_0_30px_rgba(99,102,241,0.25)] hover:shadow-[0_0_50px_rgba(99,102,241,0.4)] disabled:opacity-60 flex items-center justify-center gap-2">
-                  {loading ? (
+                  {state.submitting ? (
                     <svg className="animate-spin w-4 h-4" viewBox="0 0 24 24" fill="none">
                       <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
                       <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
                     </svg>
                   ) : <ArrowRight className="w-4 h-4" />}
-                  {loading ? 'Submitting…' : 'Request Early Access'}
+                  {state.submitting ? 'Submitting…' : 'Request Early Access'}
                 </button>
               </form>
             )}
